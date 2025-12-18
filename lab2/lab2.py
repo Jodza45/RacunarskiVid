@@ -59,23 +59,22 @@ def main():
     plt.show()
     reconstructed = morphological_reconstruction(marker, closing)
     plt.imshow(reconstructed, cmap='gray')
-    plt.title("Morfološka rekonstrukcija")
     plt.show()
     # Kombinovanje maski
-    final_mask = cv2.bitwise_and(closing, reconstructed)
-    plt.imshow(final_mask)
-    plt.show()
+    # final_mask = cv2.bitwise_and(closing, reconstructed)
+    # plt.imshow(final_mask)
+    # plt.show()
 
     # Prikaz originalne slike
     plt.imshow(image_rgb)
     plt.show()
 
     # Prikaz finalne maske u sivoj boji
-    plt.imshow(final_mask, cmap='gray')
-    plt.show()
+    # plt.imshow(final_mask, cmap='gray')
+    # plt.show()
 
     # Prikaz konacne slike gde je finalna maska primenjena na originalnu sliku
-    result = cv2.bitwise_and(image, image, mask=final_mask)
+    result = cv2.bitwise_and(image, image, mask=reconstructed)
     plt.imshow(result)
     plt.show()
     result_rgb = cv2.cvtColor(result, cv2.COLOR_BGR2RGB)
